@@ -4,8 +4,8 @@ require File.expand_path('../lib/siriproxy-myplugin/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["machimotako"]
   gem.email         = ["masatako@mac.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{myplugin}
+  gem.summary       = %q{myplugin}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
