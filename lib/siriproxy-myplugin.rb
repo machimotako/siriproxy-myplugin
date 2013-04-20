@@ -27,12 +27,12 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
-  listen_for /テスト プラグイン/i do
+  listen_for /テスト?プラグイン/i do
     say "こんにちは。Siri Proxyです。"
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
-  listen_for /test hi/i do
+  listen_for /test?hi/i do
     say "こんにちは。Siri Proxyです。"
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
