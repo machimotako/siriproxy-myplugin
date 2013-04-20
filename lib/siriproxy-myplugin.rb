@@ -37,4 +37,9 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
+  listen_for /hi/i do
+    say "This is Siri Proxy."
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
+
 end
