@@ -50,4 +50,10 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
+  listen_for /テレビをつけて/i do
+    @@log.info("The reply to テレビをつけて.")
+    say "テレビをつけます。"
+    request_completed #always complete your request! Otherwise the phone will "spin" at the user!
+  end
+
 end
