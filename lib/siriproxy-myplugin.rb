@@ -26,8 +26,8 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
 
   def initialize(config)
     #if you have custom configuration options, process them here!
-    self.host = config{"host"}
-    self.signals = config{"signals"}
+    self.host = config["host"]
+    self.signals = config["signals"]
   end
 
   def signal_to_iremocon(signal)
