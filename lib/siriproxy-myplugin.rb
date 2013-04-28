@@ -36,7 +36,7 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     iremocon.telnet.close
   end
 
-  listen_for /テレビを(つけて|付けて|けして|消して)/
+  listen_for /テレビを(つけて|付けて|けして|消して)/ do
     say "わかりました"
     signal_to_iremocon(self.signals['stb']['power'])
     request_completed
