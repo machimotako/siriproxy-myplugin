@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "siriproxy-myplugin"
   gem.require_paths = ["lib"]
   gem.version       = Siriproxy::Myplugin::VERSION
+
+  gem.add_runtime_dependency "iremocon"
 end
