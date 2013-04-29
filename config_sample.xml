@@ -5,4 +5,8 @@ plugins:
       signals:
         stb:
           power: 3
+          catv: 30
+          input_number: 44
+          1: 32
+          5: 36
 
