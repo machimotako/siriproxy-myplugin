@@ -1,0 +1,8 @@
+plugins:
+    - name: 'Myplugin'
+      git: 'git://github.com/machimotako/siriproxy-myplugin.git'
+      host: '192.168.0.9'
+      signals:
+        stb:
+          power: 3
+

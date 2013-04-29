@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = Siriproxy::Myplugin::VERSION
 
   gem.add_runtime_dependency "iremocon"
+  gem.add_development_dependency "rspec"
 end
