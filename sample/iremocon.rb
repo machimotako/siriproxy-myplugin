@@ -4,7 +4,14 @@ require 'iremocon'
 
   def signal_to_iremocon(signal)
     iremocon = ::Iremocon.new("192.168.0.9")
-    iremocon.is(signal)
+    if signal.kind_of? Array
+      signal.each do |s|
+        iremocon.is(s)
+        sleep 0.5
+      end
+    else
+      iremocon.is(signal)
+    end
     iremocon.telnet.close
   end
 
@@ -19,11 +26,7 @@ require 'iremocon'
     $APP_CONFIG = OpenStruct.new(YAML.load_file("config_sample.xml"))
     config = $APP_CONFIG.plugins[0]
     signals = config["signals"]
-    signal_to_iremocon(signals['stb']['catv'])
-    signal_to_iremocon(signals['stb']['input_number'])
-    signal_to_iremocon(signals['stb']['5'])
-    signal_to_iremocon(signals['stb']['1'])
-    signal_to_iremocon(signals['stb']['1'])
+    signal_to_iremocon(signals['stb']['change_ch']['kidsstation'])
   end
 
   run_change_channel

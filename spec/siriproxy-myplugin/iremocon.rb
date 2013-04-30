@@ -16,5 +16,13 @@ describe "iremocon" do
     signals = config["signals"]
     signal_to_iremocon(signals['stb']['power'])
   end
+
+  it "change channel to kidsstation." do
+    $APP_CONFIG = OpenStruct.new(YAML.load_file("config_sample.xml"))
+    config = $APP_CONFIG.plugins[0]
+    config["name"].should == "Myplugin"
+    signals = config["signals"]
+    signal_to_iremocon(signals['stb']['change_ch']['kidsstation'])
+  end
 end
 
