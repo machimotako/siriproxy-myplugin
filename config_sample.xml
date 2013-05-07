@@ -18,4 +18,8 @@ plugins:
               - 36 #5
               - 32 #1
               - 33 #2
+        light:
+          power:
+            on: 135
+            off: 140
 

@@ -32,13 +32,32 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
 
   def signal_to_iremocon(signal)
     iremocon = ::Iremocon.new(self.host)
-    iremocon.is(signal)
+    if signal.kind_of? Array
+      signal.each do |s|
+        iremocon.is(s)
+        sleep 0.5
+      end
+    else
+      iremocon.is(signal)
+    end
     iremocon.telnet.close
   end
 
   listen_for /テレビを(つけて|付けて|けして|消して)/ do
     say "わかりました"
     signal_to_iremocon(self.signals['stb']['power'])
+    request_completed
+  end
+
+  listen_for /ライトを(つけて|付けて)/ do
+    say "わかりました"
+    signal_to_iremocon(signals['light']['power'][true])
+    request_completed
+  end
+
+  listen_for /ライトを(けして|消して)/ do
+    say "わかりました"
+    signal_to_iremocon(signals['light']['power'][false])
     request_completed
   end
 

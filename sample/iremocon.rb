@@ -29,5 +29,21 @@ require 'iremocon'
     signal_to_iremocon(signals['stb']['change_ch']['kidsstation'])
   end
 
-  run_change_channel
+  def run_light_power_on
+    $APP_CONFIG = OpenStruct.new(YAML.load_file("config_sample.xml"))
+    config = $APP_CONFIG.plugins[0]
+    signals = config["signals"]
+    signal_to_iremocon(signals['light']['power'][true])
+  end
+  def run_light_power_off
+    $APP_CONFIG = OpenStruct.new(YAML.load_file("config_sample.xml"))
+    config = $APP_CONFIG.plugins[0]
+    signals = config["signals"]
+p signals
+    p signals['light']['power'][false]
+    signal_to_iremocon(signals['light']['power'][false])
+  end
+  run_light_power_off
+  sleep 3
+  run_light_power_on
 
