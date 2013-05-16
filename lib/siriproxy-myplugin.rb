@@ -43,6 +43,25 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     iremocon.telnet.close
   end
 
+  listen_for /(きっと|キット|キッド)/ do
+    response = ask "何か御用ですか？"
+    if response =~ /照明をつけて/
+      say "わかりました"
+      signal_to_iremocon(signals['light']['power'][true])
+    elsif response =~ /照明を消して/
+      say "わかりました"
+      signal_to_iremocon(signals['light']['power'][false])
+    elseif response =~ /テレビを(つけて|付けて|けして|消して)/
+      say "わかりました"
+      signal_to_iremocon(self.signals['stb']['power'])
+    else
+      say "聞き取れませんでした。"
+    end
+
+    request_completed
+
+  end
+
   listen_for /テレビを(つけて|付けて|けして|消して)/ do
     say "わかりました"
     signal_to_iremocon(self.signals['stb']['power'])
