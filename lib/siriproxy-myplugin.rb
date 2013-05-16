@@ -51,7 +51,7 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     elsif response =~ /照明を消して/
       say "わかりました"
       signal_to_iremocon(signals['light']['power'][false])
-    elseif response =~ /テレビを(つけて|付けて|けして|消して)/
+    elsif response =~ /テレビを(つけて|付けて|けして|消して)/
       say "わかりました"
       signal_to_iremocon(self.signals['stb']['power'])
     else
