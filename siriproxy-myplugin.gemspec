@@ -17,4 +17,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency "iremocon"
   gem.add_development_dependency "rspec"
+  gem.add_development_dependency "cora", '0.0.4'
+  gem.add_development_dependency "uuidtools"
+  gem.add_development_dependency "eventmachine"
 end

@@ -1,3 +1,5 @@
+#coding: UTF-8
+
 require "siriproxy-myplugin/version"
 require 'cora'
 require 'siri_objects'
@@ -43,7 +45,7 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     iremocon.telnet.close
   end
 
-  listen_for /(きっと|キット|キッド)/ do
+  listen_for /(きっと|キット|きっど|キッド)/ do
     response = ask "何か御用ですか？"
     if response =~ /照明をつけて/
       say "わかりました"
@@ -54,6 +56,17 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     elsif response =~ /テレビを(つけて|付けて|けして|消して)/
       say "わかりました"
       signal_to_iremocon(self.signals['stb']['power'])
+    elsif response =~ /チャンネルかえて/
+      res2 = ask "ご覧になりたいチャンネルは？"
+      if res2 =~ /キッズステーション/
+        say "わかりました"
+        signal_to_iremocon(self.signals['stb']['change_ch']['kidsstation'])
+      elsif res2 =~ /アニマックス/
+        say "わかりました"
+        signal_to_iremocon(self.signals['stb']['change_ch']['animax'])
+      else
+        say "聞き取れませんでした。"
+      end
     else
       say "聞き取れませんでした。"
     end
