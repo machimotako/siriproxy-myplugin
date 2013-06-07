@@ -56,7 +56,7 @@ class SiriProxy::Plugin::Myplugin < SiriProxy::Plugin
     elsif response =~ /テレビを(つけて|付けて|けして|消して)/
       say "わかりました"
       signal_to_iremocon(self.signals['stb']['power'])
-    elsif response =~ /チャンネルかえて/
+    elsif response =~ /チャンネル(かえて|変えて)/
       res2 = ask "ご覧になりたいチャンネルは？"
       if res2 =~ /キッズステーション/
         say "わかりました"
